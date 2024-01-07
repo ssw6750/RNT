@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Main = ({ navigation }) => {
   const [inputText, setInputText] = useState('');
-  const [responseData, setResponseData] = useState(null);
+  // const [responseData, setResponseData] = useState(null);
 
   const handleButtonPress = async () => {
     console.log('character_name!!! >>> ', inputText)
@@ -16,13 +16,13 @@ const Main = ({ navigation }) => {
          character_name: inputText,
         },
         headers: {
-          ['x-nxopen-api-key']: 'test_36fa72824c0197c416c480b918dcc614518782803c624186ca60d8310da35dd78f6e1cc06ff97941918b9a758e348da4'
+          ['x-nxopen-api-key']: process.env.EXPO_PUBLIC_API_KEY
         }
       },
       );
 
       // 성공적인 응답 처리
-      setResponseData(response.data);
+      // setResponseData(response.data);
       navigation.navigate('Info', { data: response.data })
       console.log('response.data >>> ', response.data);
     } catch (error) {
